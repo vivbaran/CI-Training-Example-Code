@@ -1,44 +1,41 @@
-apply plugin: 'java'
+buildscript{
+    
+repositories {
+       
+     maven{
+             url "http://10.109.32.183:8081/nexus/content/groups/public"
+     }
+ 
+   }
+}
 
+plugins{
+  id "org.sonarqube" version "1.2"
+}
+
+
+apply plugin: 'java'
 apply plugin: 'maven'
 
 
 group = 'BankAppDemo'
-
-
 version = '0.0.1-SNAPSHOT'
-
-
 
 description = """"""
 
 
-
 sourceCompatibility = 1.7
-
 targetCompatibility = 1.7
 
 
-
-
-
-repositories {
-        
-     
-
+repositories {  
     maven{
-  
-     url "http://10.109.32.183:8081/nexus/content/groups/public"
-     }
+             url "http://10.109.32.183:8081/nexus/content/groups/public"
+        }
 
-   
 }
 
 dependencies {
-    
-    
-     testCompile  'junit:junit:4.4'
-    
-     compile group: 'org.mockito', name: 'mockito-all', version:'1.9.5'
-     
+          testCompile  'junit:junit:4.4'
+          compile group: 'org.mockito', name: 'mockito-all', version:'1.9.5'   
 }

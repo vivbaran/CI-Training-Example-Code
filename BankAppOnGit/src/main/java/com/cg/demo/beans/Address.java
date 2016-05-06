@@ -11,6 +11,5 @@ public class Address {
 	public void setAddressLine(String addressLine) {
 		this.addressLine = addressLine;
 	}
-	
-	
+
 }

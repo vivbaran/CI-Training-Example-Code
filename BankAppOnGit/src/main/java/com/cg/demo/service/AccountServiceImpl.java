@@ -1,5 +1,4 @@
 package com.cg.demo.service;
-
 import com.cg.demo.beans.Account;
 import com.cg.demo.beans.Customer;
 import com.cg.demo.exceptions.InsufficientBalanceException;
@@ -11,9 +10,8 @@ import com.cg.demo.util.AccountNumberGenerator;
 public class AccountServiceImpl implements AccountService {
 	
 	private AccountRepository repo;
+	public static final int INITIALAMOUNT=500;
 	
-	
-
 	public AccountServiceImpl(AccountRepository repo) {
 		super();
 		this.repo = repo;
@@ -21,13 +19,13 @@ public class AccountServiceImpl implements AccountService {
 
 	@Override
 	public Account createAccount(Customer c, float amount) throws InsufficientInitialAmountException {
-		// TODO Auto-generated method stub
+	
 		
 		if(c==null){
 			
 			throw new IllegalArgumentException();
 		}
-		if(amount < 500){
+		if(amount < INITIALAMOUNT){
 			throw new InsufficientInitialAmountException();
 		}
 		
@@ -43,7 +41,7 @@ public class AccountServiceImpl implements AccountService {
 
 	@Override
 	public Account showBalance(int accountNumber) throws InvalidAccountException {
-		// TODO Auto-generated method stub
+	
 		Account a = repo.findByAccountnumber(accountNumber);
 		if(a==null){
 			throw new InvalidAccountException(); 
@@ -54,8 +52,7 @@ public class AccountServiceImpl implements AccountService {
 	@Override
 	public Account withdraw(int accountNumber, float amount)
 			throws InvalidAccountException, InsufficientBalanceException {
-		// TODO Auto-generated method stub
-		
+				
 		if(amount<=0){
 			throw new IllegalArgumentException();
 		}
@@ -76,7 +73,7 @@ public class AccountServiceImpl implements AccountService {
 
 	@Override
 	public Account deposit(int accountNumber, float amount) throws InvalidAccountException {
-		// TODO Auto-generated method stub
+	
 		if(amount<=0){
 			throw new IllegalArgumentException();
 		}
@@ -91,16 +88,3 @@ public class AccountServiceImpl implements AccountService {
 	}
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
